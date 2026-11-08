@@ -1,0 +1,122 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0f1117;
+  --bg2: #161b27;
+  --bg3: #1e2535;
+  --border: #2a3347;
+  --accent: #5b8ef0;
+  --accent2: #3d6fd4;
+  --text: #e8edf5;
+  --text2: #8a95a8;
+  --text3: #5a6478;
+  --success: #3ecf8e;
+  --warning: #f5a623;
+  --danger: #f25c54;
+  --radius: 8px;
+  --font: "Inter", system-ui, sans-serif;
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --bg: #f4f6fb;
+  --bg2: #ffffff;
+  --bg3: #eaeef6;
+  --border: #d5dcea;
+  --accent: #3d6fd4;
+  --accent2: #2f58ad;
+  --text: #1a2233;
+  --text2: #55607a;
+  --text3: #8a94a8;
+  --success: #1fa56f;
+  --warning: #d98a0b;
+  --danger: #dc4a42;
+  color-scheme: light;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.2s, color 0.2s;
+}
+
+button { cursor: pointer; font-family: var(--font); border: none; outline: none; }
+button:disabled { opacity: 0.6; cursor: not-allowed; }
+
+input, select, textarea {
+  font-family: var(--font);
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: var(--radius);
+  padding: 8px 12px;
+  font-size: 14px;
+  width: 100%;
+  transition: border-color 0.15s;
+}
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); }
+
+a { color: var(--accent); text-decoration: none; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 16px; border-radius: var(--radius);
+  font-size: 13px; font-weight: 500; transition: all 0.15s;
+}
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover:not(:disabled) { background: var(--accent2); }
+.btn-ghost { background: transparent; color: var(--text2); border: 1px solid var(--border); }
+.btn-ghost:hover { background: var(--bg3); color: var(--text); }
+.btn-danger { background: var(--danger); color: #fff; }
+.btn-danger:hover { opacity: 0.85; }
+.btn-sm { padding: 5px 10px; font-size: 12px; }
+
+.badge {
+  display: inline-block; padding: 2px 8px; border-radius: 20px;
+  font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em;
+}
+.badge-todo { background: var(--bg3); color: var(--text2); }
+.badge-in_progress { background: rgba(91,142,240,0.15); color: var(--accent); }
+.badge-done { background: rgba(62,207,142,0.15); color: var(--success); }
+.badge-low { background: rgba(62,207,142,0.12); color: var(--success); }
+.badge-medium { background: rgba(245,166,35,0.12); color: var(--warning); }
+.badge-high { background: rgba(242,92,84,0.12); color: var(--danger); }
+.badge-admin { background: rgba(91,142,240,0.15); color: var(--accent); }
+.badge-member { background: var(--bg3); color: var(--text2); }
+
+.card {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 20px;
+}
+
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 100; backdrop-filter: blur(2px);
+}
+.modal {
+  background: var(--bg2); border: 1px solid var(--border); border-radius: 12px;
+  padding: 28px; width: 100%; max-width: 480px; max-height: 90vh; overflow-y: auto;
+}
+.modal h2 { font-size: 18px; margin-bottom: 20px; }
+
+.form-group { margin-bottom: 14px; }
+.form-group label {
+  display: block; font-size: 12px; font-weight: 600; color: var(--text2);
+  margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.04em;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+.error-msg { color: var(--danger); font-size: 12px; margin-top: 4px; }
+.muted { color: var(--text2); }
+
+.theme-toggle { width: 100%; justify-content: center; margin-bottom: 8px; }
+.theme-toggle-floating { position: fixed; top: 16px; right: 16px; z-index: 50; }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
